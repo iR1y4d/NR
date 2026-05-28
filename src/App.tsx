@@ -394,7 +394,7 @@ function App() {
               {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                 <Heart className="w-6 h-6 text-white" />
               </div> */}
-              <img src={isScrolled ? '/favicon.svg' : '/faviconw.svg'} alt="VetMed Logo" className="w-12 h-12 object-contain" />
+              <img src={isScrolled ? '/NR/favicon.svg' : '/NR/faviconw.svg'} alt="VetMed Logo" className="w-12 h-12 object-contain" />
               {/* <span className={`text-xl font-bold ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
                 VetMed
               </span> */}
