@@ -297,7 +297,7 @@ const products = [
   {
     icon: Warehouse,
     title: 'product_farm',
-    image: `${import.meta.env.BASE_URL}images/cow.jpg`,
+    image: `${import.meta.env.VITE_IMAGE_PATH}/cow.jpg`,
     description: { 
       en: 'Specialized products for farm animals and livestock', 
       ar: 'منتجات متخصصة لحيوانات المزرعة والماشية' 
@@ -565,7 +565,7 @@ function App() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   // src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=800&h=1000&fit=crop"
-                  src={`${import.meta.env.BASE_URL}images/sheep.jpg`}
+                  src={`${import.meta.env.VITE_IMAGE_PATH}/sheep.jpg`}
                   alt="Veterinary professional"
                   className="w-full h-[500px] object-cover"
                 />
