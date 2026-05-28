@@ -583,7 +583,7 @@ function App() {
               {/* Stats Card */}
               <motion.div 
                 variants={fadeInUp}
-                className="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-xl p-6 max-w-xs"
+                className="absolute -bottom-8 -right-10 bg-white rounded-2xl shadow-xl p-6 max-w-xs"
               >
                 <div className="flex items-center space-x-4 rtl:space-x-reverse">
                   <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center">
