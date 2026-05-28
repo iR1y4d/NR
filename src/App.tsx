@@ -297,7 +297,7 @@ const products = [
   {
     icon: Warehouse,
     title: 'product_farm',
-    image: `${import.meta.env.VITE_IMAGE_PATH}/cow.jpg`,
+    image: `${import.meta.env.BASE_URL}images/cow.jpg`,
     description: { 
       en: 'Specialized products for farm animals and livestock', 
       ar: 'منتجات متخصصة لحيوانات المزرعة والماشية' 
@@ -318,7 +318,10 @@ const partners = [
 ];
 
 function App() {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem('language');
+    return (saved === 'en' || saved === 'ar') ? saved : 'en';
+  });
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -333,7 +336,11 @@ function App() {
 
   // Toggle language
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+    setLanguage(prev => {
+      const newLang = prev === 'en' ? 'ar' : 'en';
+      localStorage.setItem('language', newLang);
+      return newLang;
+    });
   };
 
   // Translation helper
@@ -384,12 +391,13 @@ function App() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+              {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                 <Heart className="w-6 h-6 text-white" />
-              </div>
-              <span className={`text-xl font-bold ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
+              </div> */}
+              <img src={isScrolled ? '/favicon.svg' : '/faviconw.svg'} alt="VetMed Logo" className="w-12 h-12 object-contain" />
+              {/* <span className={`text-xl font-bold ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
                 VetMed
-              </span>
+              </span> */}
             </div>
 
             {/* Desktop Navigation */}
@@ -409,7 +417,7 @@ function App() {
               {/* Language Switcher */}
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`mr-7 flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all ${
                   isScrolled 
                     ? 'bg-blue-50 text-blue-600 hover:bg-blue-100' 
                     : 'bg-white/20 text-white hover:bg-white/30'
@@ -472,12 +480,12 @@ function App() {
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+          {/* <img 
             src="https://images.unsplash.com/photo-1628009368231-7cc9c2496e07?w=1920&h=1080&fit=crop"
             
             alt="Veterinary clinic"
             className="w-full h-full object-cover"
-          />
+          /> */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-blue-900/70" />
         </div>
 
@@ -491,7 +499,7 @@ function App() {
           >
             <motion.div variants={fadeInUp}>
               <span className="inline-block px-6 py-2 bg-blue-500/20 backdrop-blur-sm text-blue-300 rounded-full text-sm font-medium border border-blue-400/30">
-                {language === 'en' ? 'Welcome to VetMed Imports' : 'مرحباً بكم في فيتمد إمبورتس'}
+                {language === 'en' ? 'Welcome to AL-Rakiza AL- jadida' : 'مرحباً بكم في الركيزة الجديدة'}
               </span>
             </motion.div>
             
@@ -565,7 +573,7 @@ function App() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   // src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=800&h=1000&fit=crop"
-                  src={`${import.meta.env.VITE_IMAGE_PATH}/sheep.jpg`}
+                  src={`${import.meta.env.BASE_URL}images/sheep.jpg`}
                   alt="Veterinary professional"
                   className="w-full h-[500px] object-cover"
                 />
